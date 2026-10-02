@@ -335,8 +335,4 @@ sync_state
 * Production deployment
 * Better room discovery and management
 
-## Author
 
-**Aditya Pandey**
-
-GitHub: https://github.com/Aditya56954
