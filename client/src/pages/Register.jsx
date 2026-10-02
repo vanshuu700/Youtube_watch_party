@@ -117,7 +117,7 @@ export default function Register() {
               name="name"
               value={form.name}
               onChange={handleChange}
-              placeholder="aditya"
+              placeholder="Vansh"
               autoComplete="name"
               autoFocus
               required
