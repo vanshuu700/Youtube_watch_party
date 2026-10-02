@@ -58,12 +58,19 @@ app.use("/api/auth", authRoutes);
 // Database connection test
 app.get("/db-test", async (req, res) => {
   try {
-    const result = await pool.query("SELECT NOW()");
+    const result = await pool.query(`
+      SELECT
+        current_database() AS database,
+        current_schema() AS schema,
+        current_user AS username,
+        current_setting('search_path') AS search_path,
+        to_regclass('users') AS users_table,
+        to_regclass('public.users') AS public_users_table
+    `);
 
     return res.status(200).json({
       success: true,
-      message: "Database connected",
-      time: result.rows[0].now,
+      databaseInfo: result.rows[0],
     });
   } catch (error) {
     console.error("Database connection error:", error);
